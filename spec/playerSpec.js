@@ -42,4 +42,45 @@ describe('Board', () => {
         });
     });
 
+    // describe('victoryCombinations', () => {
+    //     it('should return a victory combination if it exists', () => {
+    //         board.gameBoard[0] = "O";
+    //         board.gameBoard[1] = "O";
+    //         board.gameBoard[2] = "O";
+    //         expect(board.victoryCombinations()).toEqual([[0,1,2]]);
+    //     });
+    //     it('should return false if no victory combo is present on the gameboard', () => {
+    //         expect(board.victoryCombinations()).toEqual(false);
+    //     });
+    // });
+
+    describe('isGameOver', () => {
+        it('should return true if a player has met a win condition', () => {
+            board.gameBoard[0] = "O";
+            board.gameBoard[1] = "O";
+            board.gameBoard[2] = "O";
+            expect(board.isGameOver()).toEqual(true);
+        });
+        it('should return true if a tie state is reached', () => {
+            board.gameBoard = ["X", "O", "X", "X", "O", "O", "O", "X", "X"];
+            expect(board.isGameOver()).toEqual(false);
+        });
+        it('should return false where game hasnt reached an end state', () => {
+            expect(board.isGameOver()).toEqual(false);
+        });
+    });
+
+    describe('victoryWeapon', () => {
+        it('should return the weapon type of the player that has won', () => {
+            board.gameBoard[0] = "O";
+            board.gameBoard[1] = "O";
+            board.gameBoard[2] = "O";
+            expect(board.victoryWeapon()).toEqual("O");
+        });
+        it('should return false when neither player has won', () => {
+            expect(board.victoryWeapon()).toEqual(false)
+        });
+    });
+
+
 });
